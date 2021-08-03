@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+    <script async src="lib/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+    <title>OpenCV.js</title>
+  </head>
+
+  <body>
+
+    <nav id="site-navigation" class="site-navigation">
+      <ul class="main-menu clicky-menu no-js">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="binaryMask.html">Binary Mask</a>
+        </li>
+        <li>
+          <a href="meanshift.html">Meanshift</a>
+        </li>
+        <li>
+          <a class="activePage" href="#">Camshift</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="divBody">
+        <br><span id="status">Initializing...</span> <br><br>
+
+        <!-- <button id="deviceCameraButton" onclick="changeInputSource()">Device Camera</button> -->
+        <input id="videoInputButton" type="file" accept="video/*" disabled>
+
+        <button id="sampleVideoButton" onclick="loadSampleVideo()">Load Sample Video</button><br>
+        <button id="toggleStream" onclick="run()">ANALIZE</button><br>
+        <!-- <button id="analyzeButton" onclick="processVideo()">ANALIZE</button> -->
+        <!-- <button id="downloadButton" onclick="downloadVideo()">DOWNLOAD</button><br> -->
+
+        <!-- <button id="toggleStream" onclick="successCallback()">Play</button> -->
+
+        <!-- <button id="kg" onclick="weightUnitChanged(0)" disabled>Kg</button>
+        <button id="lbs" onclick="weightUnitChanged(1)">lbs</button>
+        <input style="width: 50px;" id="weight" type="tel"><br> -->
+
+        <!-- fps counter ??? -->
+        <!-- add sliders to change path and dot color ??? -->
+        <!-- add graphs to display data in a fancy way ??? -->
+
+        <!-- automaticaly identify aspect ratio and set video tag size -->
+        <!-- add button that loads sample video from "/media/sample.mp4" (download video from some weightlifter. fernando reis?) -->
+        <!-- add button SAVE ANALIZED VIDEO ??? -->
+
+        <video id="videoInput" style="display: none;" muted crossorigin="anonymous"></video>
+        <!-- <video id="videoInput" width="432" height="768" controls  loop muted crossorigin="anonymous"></video>  -->
+        <!-- controls autoplay loop muted --><!-- style="display: none;" -->
+
+        <canvas id='output'></canvas>
+        <!-- <canvas id="canvasOutput" width="432" height="768"></canvas> -->
+
+        <script src="camshift.js" type="text/javascript"></script>
+
+    </div>
+
+  </body>
+
+</html>

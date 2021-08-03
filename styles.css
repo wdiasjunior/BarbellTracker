@@ -1,0 +1,132 @@
+body {
+  /* background-size: 100%;
+  background-image: linear-gradient(to right top, #557b8e 0%, #c7e5ce 100%);
+  width: 100%; */
+
+ /* background-color: #f5f5f5; */
+ background-color: #4a616378;
+ /* background-color: rgba(230, 238, 249, 0.5); */
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(-37deg, teal, purple, orange) center/cover no-repeat;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+         Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+         "Helvetica Neue", sans-serif;
+}  */
+
+.divBody {
+  height: 90%;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 1px;
+  padding-bottom: 20px;
+}
+
+p {
+  margin: 15px 40px 15px;
+}
+
+canvas, video {
+  border: 2px solid black !important;
+}
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+input, button {
+  margin-bottom: 10px;
+}
+
+
+.clicky-menu.no-js li:hover > ul {
+  visibility: visible;
+}
+.clicky-menu.no-js li:focus-within > ul {
+  visibility: visible;
+}
+
+.site-navigation, div {
+  width: 86%;
+  max-width: 782px;
+  margin: 15px auto 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.clicky-menu {
+  /* justify-content: stretch; */
+  margin: 0;
+  padding: 0;
+  /* list-style: none; */
+}
+@media (min-width: 520px) {
+  .clicky-menu {
+    display: flex;
+  }
+}
+
+.activePage {
+  background: #fff !important;
+}
+
+.clicky-menu a,
+.clicky-menu button {
+  margin: .25em;
+  padding: 1em;
+  background: transparent;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: inherit;
+  border-radius: 3px;
+}
+
+.clicky-menu a:hover,
+.clicky-menu button:hover {
+  background: #fff;
+}
+
+.clicky-menu > li {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: stretch;
+  flex-wrap: wrap;
+}
+
+.clicky-menu > li > a,
+.clicky-menu > li > button {
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 0;
+  font-size: inherit;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@media (min-width: 540px) {
+  .clicky-menu > li > a,
+  .clicky-menu > li > button {
+    justify-content: center;
+  }
+}
+
+.github {
+  color: #000;
+}
