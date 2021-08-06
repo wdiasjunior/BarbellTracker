@@ -142,7 +142,7 @@ function barMath(x, y) {
         }
         xDisp = lastX - x;
         xDisp = (xDisp / 10);
-        yDisp = lastY - y
+        yDisp = lastY - y;
         // xDistance = xDisp * mmpp;
         yDistance = yDisp * mmpp;
         // distance = Math.sqrt(xDisp ** 2 + yDisp ** 2) * mmpp;
@@ -186,7 +186,7 @@ function pathColorChange(color) {
     red = 255;
     green = 0;
     blue = 0;
-    document.getElementById('redButton').disabled = true;deviceCameraButton
+    document.getElementById('redButton').disabled = true;
     document.getElementById('greenButton').disabled = false;
     document.getElementById('blueButton').disabled = false;
   } else if(color == 'green') {
@@ -273,6 +273,7 @@ function processVideo() {
 
   let Moments;
   let M00;
+  let M01;
   let M10;
   let M00Array = [0,];
 
