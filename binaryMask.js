@@ -156,6 +156,7 @@ function barMath(x, y) {
       isConcentric = false;
       lastY = y;
       lastX = x;
+      velocities = [];
     }
   } else {
     lastY = 0;
