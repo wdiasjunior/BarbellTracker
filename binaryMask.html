@@ -34,6 +34,10 @@
         <input id="videoInputButton" type="file" accept="video/*" disabled>
         <button id="sampleVideoButton" onclick="loadSampleVideo()">Load Sample Video</button><br>
 
+        <b>Movement type</b><br>
+        <button id="pullButton" onclick="movementTypeChange(1)" disabled>Pull</button>
+        <button id="squatBenchButton" onclick="movementTypeChange(2)">Squat / Bench Press</button><br><br>
+
         <button id="analyzeButton" onclick="processVideo()">ANALYZE</button><br><br>
         <button id="playPause" onclick="playPause()" style="display: none;">Play</button><br><br>
         <!-- <button id="downloadButton" onclick="downloadVideo()">DOWNLOAD</button><br> -->

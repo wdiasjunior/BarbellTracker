@@ -94,6 +94,20 @@ function weightUnitChanged(n) {
   }
 }
 
+let pull = true;
+
+function movementTypeChange(n) {
+  if(n == 1) {
+    document.getElementById('pullButton').disabled = true;
+    document.getElementById('squatBenchButton').disabled = false;
+    pull = true;
+  } else {
+    document.getElementById('pullButton').disabled = false;
+    document.getElementById('squatBenchButton').disabled = true;
+    pull = false;
+  }
+}
+
 let isConcentric = false;
 let rest = true;
 let yVelocity = 0;
@@ -127,12 +141,60 @@ function barMath(x, y) {
   // current, average, min, max(peak) of each above ?
 
   if(initialY == 0) {
-    initialY = y;
+    initialY = lastY = y;
+    // lastX = x;
   }
-  if((initialY + oscilation) < y) { // checks for rep. ignores bar whip in between reps
-    rest = false;
-    if(y < lastY) { // checks if movement is concentric
+
+  if(!pull) {
+    if((initialY + oscilation) < y) {
+      rest = false;
+      if(y < lastY) { // checks if movement is concentric
+        isConcentric = true;
+
+        // velocity = 0;
+        yVelocity = 0;
+        if (radius / height > 0.0125) {
+          if(refRadius == null) {
+            refRadius = radius;
+            mmpp = barRadius / refRadius;
+          }
+          xDisp = lastX - x;
+          yDisp = lastY - y
+          yDistance = yDisp * mmpp;
+          if(Math.abs(yDistance) > (barRadius / 4)) {
+            yVelocity = yDistance * FPS / 1000;
+            velocities.push(yVelocity);
+          }
+        }
+      } else {
+        isConcentric = false;
+        lastY = y;
+        lastX = x;
+        velocities = [];
+      }
+    } else {
+      lastY = 0;
+      lastX = 0;
+      rest = true;
+    }
+    let sum = 0;
+    for(let i = 0; i < velocities.length; i++) {
+      sum += velocities[i];
+    }
+    avgVelocity = (sum / velocities.length) / 10;
+  }
+
+  if(pull) {
+
+    if((initialY > y) && (lastY < y)) {
+      isConcentric = false;
+      // console.log("catch")
+      // lastY = y;
+      // lastX = x;
+      velocities = [];
+    } else {
       isConcentric = true;
+
       // velocity = 0;
       yVelocity = 0;
       if (radius / height > 0.0125) {
@@ -141,41 +203,31 @@ function barMath(x, y) {
           mmpp = barRadius / refRadius;
         }
         xDisp = lastX - x;
-        xDisp = (xDisp / 10);
-        yDisp = lastY - y;
-        // xDistance = xDisp * mmpp;
+        yDisp = lastY - y
         yDistance = yDisp * mmpp;
-        // distance = Math.sqrt(xDisp ** 2 + yDisp ** 2) * mmpp;
-        if(Math.abs(yDistance) > (barRadius / 4)) {
-          // velocity = distance * FPS / 1000;
+        if(Math.abs(yDistance) > (barRadius / 6)) {
           yVelocity = yDistance * FPS / 1000;
           velocities.push(yVelocity);
         }
+        lastY = y;
+        lastX = x;
       }
-    } else {
-      isConcentric = false;
-      lastY = y;
-      lastX = x;
-      velocities = [];
     }
-  } else {
-    lastY = 0;
-    lastX = 0;
-    rest = true;
+    avgVelocity = Math.max(...velocities);
+    velocities = [];
+
   }
 
-  let sum = 0;
-  for(let i = 0; i < velocities.length; i++) {
-    sum += velocities[i];
-  }
-  avgVelocity = (sum / velocities.length) / 10;
   acceleration = (avgVelocity / (FPS / 1000)) / 10;
 
+  if(avgVelocity !== Infinity && avgVelocity !== -Infinity) {
+    console.log(avgVelocity.toFixed(2));
+  }
+  
   document.getElementById("velocity").innerHTML = avgVelocity.toFixed(2);
   document.getElementById("acceleration").innerHTML = acceleration.toFixed(2);
   // document.getElementById("power").innerHTML = power;
   document.getElementById("horizontalDisplacement").innerHTML = -xDisp.toFixed(2);
-
 }
 
 let red = 0;
