@@ -273,7 +273,7 @@ function processVideo() {
   let src = new cv.Mat(height, width, cv.CV_8UC4);
   let dst = new cv.Mat(height, width, cv.CV_8UC1);
   let cap = new cv.VideoCapture(videoInput);
-  document.getElementById("playPause").style = display = true;
+  document.getElementById("playPause").disabled = false;
 
   let begin = Date.now();
   cap.read(src);
