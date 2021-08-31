@@ -18,7 +18,7 @@
 
 function loadSampleVideo() {
   document.getElementById("videoInput").removeAttribute("src");
-  document.getElementById("videoInput").setAttribute("src", "media/2.mp4");
+  document.getElementById("videoInput").setAttribute("src", "media/3.mp4");
   // document.getElementById("videoInput").load();
   // document.getElementById("videoInput").play();
   document.getElementById("videoInput").pause();
@@ -223,7 +223,7 @@ function barMath(x, y) {
   if(avgVelocity !== Infinity && avgVelocity !== -Infinity) {
     console.log(avgVelocity.toFixed(2));
   }
-  
+
   document.getElementById("velocity").innerHTML = avgVelocity.toFixed(2);
   document.getElementById("acceleration").innerHTML = acceleration.toFixed(2);
   // document.getElementById("power").innerHTML = power;
