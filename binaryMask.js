@@ -9,11 +9,6 @@
   }
   var inputNode = document.querySelector('input')
   inputNode.addEventListener('change', playSelectedFile, true)
-
-  // document.getElementById('deviceCameraButton').disabled = false;
-
-  // setTimeout(processVideo, 0); // ??? auto process video after is loaded?
-  // delete all and reinitiale variables (matrixes, contours and lines)
 })()
 
 function loadSampleVideo() {
@@ -40,14 +35,6 @@ function onOpenCvReady() {
   console.log('OpenCV Ready');
   document.getElementById('status').innerHTML = "OpenCV is Ready";
   document.getElementById('videoInputButton').disabled = false;
-}
-
-function setup() {
-  // TODO initialize variables
-
-  // put processVideo() here ?
-
-  // setTimeout(processVideo, 0);
 }
 
 function downloadVideo() {
@@ -267,6 +254,11 @@ let count = 0;
 let centerPointArray = new Array();
 
 function processVideo() {
+
+  document.getElementById("videoInput").addEventListener("ended", function(event) { // checks if the video has ended
+      centerPointArray = []; // deletes the barbell path
+      videoInput.play(); // plays video
+  }, false);
 
   const videoInput = document.getElementById("videoInput");
   const canvas = document.getElementById("canvasOutput");
