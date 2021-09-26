@@ -144,10 +144,12 @@ function barMath(x, y) {
           if(refRadius == null) {
             refRadius = radius;
             mmpp = barRadius / refRadius;
+            console.log(mmpp, barRadius, radius)
           }
           xDisp = lastX - x;
           yDisp = lastY - y
-          yDistance = yDisp * mmpp;
+          yDistance = Math.sqrt((yDisp ** 2)) * mmpp;
+          distance = Math.sqrt((xDisp ** 2) + (yDisp ** 2)) * mmpp;
           if(Math.abs(yDistance) > (barRadius / 4)) {
             yVelocity = yDistance * FPS / 1000;
             velocities.push(yVelocity);
@@ -187,11 +189,15 @@ function barMath(x, y) {
       if (radius / height > 0.0125) {
         if(refRadius == null) {
           refRadius = radius;
+          // mmpp = 1.39;
           mmpp = barRadius / refRadius;
+          console.log(mmpp, barRadius, radius)
         }
         xDisp = lastX - x;
         yDisp = lastY - y
-        yDistance = yDisp * mmpp;
+        // yDistance = yDisp * mmpp;
+        yDistance = Math.sqrt((yDisp ** 2)) * mmpp;
+        distance = Math.sqrt((xDisp ** 2) + (yDisp ** 2)) * mmpp;
         if(Math.abs(yDistance) > (barRadius / 6)) {
           yVelocity = yDistance * FPS / 1000;
           velocities.push(yVelocity);
