@@ -13,7 +13,7 @@
 
 function loadSampleVideo() {
   document.getElementById("videoInput").removeAttribute("src");
-  document.getElementById("videoInput").setAttribute("src", "media/2.mp4");
+  document.getElementById("videoInput").setAttribute("src", "media/3.mp4");
   // document.getElementById("videoInput").load();
   // document.getElementById("videoInput").play();
   document.getElementById("videoInput").pause();
