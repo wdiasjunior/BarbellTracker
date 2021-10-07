@@ -13,7 +13,7 @@
 
 function loadSampleVideo() {
   document.getElementById("videoInput").removeAttribute("src");
-  document.getElementById("videoInput").setAttribute("src", "media/3.mp4");
+  document.getElementById("videoInput").setAttribute("src", "media/2.mp4");
   // document.getElementById("videoInput").load();
   // document.getElementById("videoInput").play();
   document.getElementById("videoInput").pause();
@@ -199,26 +199,32 @@ function barMath(x, y) {
         yDistance = Math.sqrt((yDisp ** 2)) * mmpp;
         distance = Math.sqrt((xDisp ** 2) + (yDisp ** 2)) * mmpp;
         if(Math.abs(yDistance) > (barRadius / 6)) {
-          yVelocity = yDistance * FPS / 1000;
+          yVelocity = distance * FPS / 1000;
           velocities.push(yVelocity);
         }
         lastY = y;
         lastX = x;
       }
     }
-    avgVelocity = Math.max(...velocities);
-    velocities = [];
+    // avgVelocity = Math.max(...velocities);
+    // velocities = [];
 
   }
+
+  let sum = 0;
+  for(let i = 0; i < velocities.length; i++) {
+    sum += velocities[i];
+  }
+  avgVelocity = (sum / velocities.length); //  / 10
 
   acceleration = (avgVelocity / (FPS / 1000)) / 10;
 
   if(avgVelocity !== Infinity && avgVelocity !== -Infinity) {
     console.log(avgVelocity.toFixed(2));
+    document.getElementById("velocity").innerHTML = avgVelocity.toFixed(2);
+    document.getElementById("acceleration").innerHTML = acceleration.toFixed(2);
   }
 
-  document.getElementById("velocity").innerHTML = avgVelocity.toFixed(2);
-  document.getElementById("acceleration").innerHTML = acceleration.toFixed(2);
   // document.getElementById("power").innerHTML = power;
   document.getElementById("horizontalDisplacement").innerHTML = -xDisp.toFixed(2);
 }
@@ -263,6 +269,7 @@ function processVideo() {
 
   document.getElementById("videoInput").addEventListener("ended", function(event) { // checks if the video has ended
       centerPointArray = []; // deletes the barbell path
+      velocities = []; // resets velocities array
       videoInput.play(); // plays video
   }, false);
 
@@ -324,7 +331,6 @@ function processVideo() {
 
   let Moments;
   let M00;
-  let M01;
   let M10;
   let M00Array = [0,];
 
@@ -369,6 +375,7 @@ function processVideo() {
   contours.delete();
   hierarchy.delete();
   hsv.delete();
+  M.delete();
 
   let delay = 1000/FPS - (Date.now() - begin);
   setTimeout(processVideo, delay);
