@@ -208,13 +208,13 @@ function barMath(x, y) {
     }
     // avgVelocity = Math.max(...velocities);
     // velocities = [];
+    let sum = 0;
+    for(let i = 0; i < velocities.length; i++) {
+      sum += velocities[i];
+    }
     avgVelocity = (sum / velocities.length); //  / 10;
   }
 
-  let sum = 0;
-  for(let i = 0; i < velocities.length; i++) {
-    sum += velocities[i];
-  }
 
   acceleration = (avgVelocity / (FPS / 1000)) / 10;
 
