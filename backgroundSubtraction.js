@@ -49,13 +49,13 @@ function changeInputSource(n) {
 
   // document.getElementById('deviceCameraButton').disabled = true;
 
-  if(n == 0) {
-    cameraInput = false;
-    // TODO
-  } else if(n == 1) {
-    cameraInput = true;
-    // TODO
-  }
+  // if(n == 0) {
+  //   cameraInput = false;
+  //   // TODO
+  // } else if(n == 1) {
+  //   cameraInput = true;
+  //   // TODO
+  // }
 
 }
 
@@ -120,12 +120,6 @@ let radius = null;
 let refRadius = null;
 
 function barMath(x, y) {
-
-  // acceleration (m/s^2)
-  // speed/velocity (concentric only m/s)
-  // power (kW)
-  // horizontal displacement (cm)
-  // current, average, min, max(peak) of each above ?
 
   if(initialY == 0) {
     initialY = lastY = y;
